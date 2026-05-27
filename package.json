@@ -1,0 +1,30 @@
+{
+  "name": "playwright-qa-automation-lab",
+  "version": "1.0.0",
+  "description": "Playwright UI automation lab for QA portfolio",
+  "scripts": {
+    "serve": "npx http-server demo-site -p 3000",
+    "test": "npx playwright test",
+    "test:chromium": "npx playwright test --project=chromium",
+    "test:ui": "npx playwright test --ui",
+    "report": "npx playwright show-report",
+    "lint": "eslint tests pages demo-site playwright.config.js --ext .js",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "@types/node": "^25.9.1",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "playwright",
+    "qa",
+    "automation",
+    "testing"
+  ],
+  "author": "Meir Tleu",
+  "license": "MIT"
+}
