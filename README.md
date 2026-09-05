@@ -193,7 +193,7 @@ Main focus:
 
 ## Contact
 
-**Meir Tleu**
+**Meirzhan Tleubaev**
 [LinkedIn](https://www.linkedin.com/in/meirzhantleubaev/)
 [tleubaevmeirzhan@gmail.com](mailto:tleubaevmeirzhan@gmail.com)
 
