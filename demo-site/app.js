@@ -40,10 +40,16 @@ function renderTasks(tasks) {
   tasks.forEach(t => {
     const i = document.createElement('div');
     i.className = 'task-item';
-    i.innerHTML = `
-      <span>${t.title}</span>
-      <button class="delete-btn" onclick="deleteTask(${t.id})">Delete</button>
-    `;
+    const title = document.createElement('span');
+    // Task titles are user input: display text instead of parsing HTML.
+    title.textContent = t.title;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'delete-btn';
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', () => window.deleteTask(t.id));
+
+    i.append(title, deleteButton);
     l.appendChild(i);
   });
 }
