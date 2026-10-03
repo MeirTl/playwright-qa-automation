@@ -31,12 +31,14 @@ This is a learning portfolio project, not a production-grade framework.
 - Login flow
 - Invalid login validation
 - Task creation
-- Task editing
 - Task deletion
 - Form validation
 - Basic regression checks
-- API mocking / request interception
 - Cross-browser execution
+- Task titles containing HTML are rendered as literal text
+
+`tests/api-demo.spec.js` currently contains a request-interception placeholder;
+the demo app does not call an API, so this is not verified API coverage.
 
 ---
 
@@ -65,7 +67,7 @@ playwright-qa-automation/
 ├── playwright.config.js    # Playwright configuration
 ├── package.json            # Scripts and dependencies
 └── README.md
-````
+```
 
 ---
 
@@ -175,6 +177,24 @@ The project follows simple automation principles:
 * Page Object Model should reduce duplication;
 * reports and artifacts should help with debugging.
 
+### Task title security regression
+
+The local demo previously inserted task titles with `innerHTML`, allowing an
+image event handler in a title to execute in the browser. Titles now use
+`textContent`; the Delete button is created separately with `addEventListener`.
+
+`tests/task-security.spec.js` checks that HTML markup and an image with an
+`onerror` handler remain literal text, create no injected elements, and can
+still be deleted without removing other tasks. Both cases failed against the
+original renderer before the fix.
+
+```bash
+npx playwright test tests/task-security.spec.js --project=chromium
+```
+
+This is a regression check for a local, in-memory training app. It does not
+demonstrate a production vulnerability or a complete security audit.
+
 ---
 
 ## Current Status
@@ -196,5 +216,4 @@ Main focus:
 **Meirzhan Tleubaev**
 [LinkedIn](https://www.linkedin.com/in/meirzhantleubaev/)
 [tleubaevmeirzhan@gmail.com](mailto:tleubaevmeirzhan@gmail.com)
-
 
